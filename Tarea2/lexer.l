@@ -31,7 +31,13 @@ LOGICOS         (\||^|~)
 
 <INITIAL>{ID}                                        {printf( "Un identificador: %s\n", yytext );}
 
-<INITIAL>"+"|"-"|"*"|"/"                             {printf( "Un operador: %s\n", yytext );}
+<INITIAL>{LOGICOS}									 {printf( "Un operador logico: %s\n", yytext );}
+
+<INITIAL>{RELACIONALES}								 {printf( "Un operador relacional: %s\n", yytext );}
+
+<INITIAL>{ASIGNACION}								 {printf( "Un operador asignacion: %s\n", yytext );}
+
+<INITIAL>{ARITMETICOS}	                             {printf( "Un operador aritmetico: %s\n", yytext );}
 
 <INITIAL>"{"[^}\n]*"}"                               {/* se come una linea de comentarios */}
 
