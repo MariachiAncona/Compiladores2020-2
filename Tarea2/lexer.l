@@ -14,32 +14,31 @@
 LETRA           [a-zA-Z]
 DIGITO          [0-9]
 ENTERO          ([1-9]{DIGITO}+)|[0]
-DECIMAL         ({ENTERO}*\.{DIGITO})
 ID              [#]({LETRA}|{DIGITO})+
-ARIT            (+|-|*|/|%)
-RELACIONALES    (<|>|>=|>=|==|!=)
-PUNTUACION      ({|}|(|)|;|,)
+RELACIONALES    (<|>|>=|<=|==|!=)
 ASIGNACION      (\=)
 LOGICOS         (\||^|~)
+
+
 %%
 
-<INITIAL>{DIGITO}+                                   {printf( "Un entero: %s (%d)\n", yytext, atoi( yytext ) );}
+<INITIAL>([1-9]{DIGITO}*)|"0"                        {printf( "Linea %d:Un entero: %s (%d)\n", yylineno, yytext, atoi( yytext ) );}
 
-<INITIAL>{DIGITO}+"."{DIGITO}*                       {printf( "Un real: %s (%g)\n", yytext, atof( yytext ) );}
+<INITIAL>{DIGITO}*"."{DIGITO}+       				 {printf( "Linea %d:Un real: %s (%g)\n",yylineno,  yytext, atof( yytext ) );}
 
-<INITIAL>@if|@else|@while                            {printf( "Una palabra reservada: %s\n", yytext );}
+<INITIAL>@if|@else|@while                            {printf( "Linea %d:Una palabra reservada: %s\n",yylineno,  yytext );}
 
-<INITIAL>{ID}                                        {printf( "Un identificador: %s\n", yytext );}
+<INITIAL>{ID}                                        {printf( "Linea %d:Un identificador: %s\n",yylineno,  yytext );}
 
-<INITIAL>{LOGICOS}									 {printf( "Un operador logico: %s\n", yytext );}
+<INITIAL>"+"|"-"|"*"|"/"|"%"	 		             {printf( "Linea %d:Un operador aritmetico: %s\n",yylineno,  yytext );}
 
-<INITIAL>{RELACIONALES}								 {printf( "Un operador relacional: %s\n", yytext );}
+<INITIAL>{RELACIONALES}								 {printf( "Linea %d:Un operador relacional: %s\n",yylineno,  yytext );}
 
-<INITIAL>{ASIGNACION}								 {printf( "Un operador asignacion: %s\n", yytext );}
+<INITIAL>{LOGICOS}									 {printf( "Linea %d:Un operador logico: %s\n",yylineno,  yytext );}
 
-<INITIAL>{ARITMETICOS}	                             {printf( "Un operador aritmetico: %s\n", yytext );}
+<INITIAL>{ASIGNACION}								 {printf( "Linea %d:Un operador de asignacion: %s\n",yylineno,  yytext );}
 
-<INITIAL>"{"[^}\n]*"}"                               {/* se come una linea de comentarios */}
+<INITIAL>"{"|"}"|"("|")"|";"|","					 {printf( "Linea %d:Un operador de puntuacion: %s\n",yylineno,  yytext );}
 
 <INITIAL>[ \t\n]+                                    {/* se come los espacios en blanco */}
 
@@ -52,6 +51,7 @@ LOGICOS         (\||^|~)
 <COMENTARIO>"*/"                                     {BEGIN(INITIAL);/*Retorna cuando encuentra asterisco y diagonal juntos*/}
 
 %%
+
 void error(char *s){
 	printf("Error léxico: %s, línea: %d \n", s, yylineno);
 }
