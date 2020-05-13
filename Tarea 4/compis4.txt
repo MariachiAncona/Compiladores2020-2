@@ -1,0 +1,114 @@
+Tarea 4
+
+Derivar la cadena aa+a*
+S->SS+|SS*|a
+S=>SS*
+SS*=>SS+S*
+SS+S*=>aS+S*
+aS+S*=>aa+S*
+aa+S*=>aa+a*
+
+Derivar la cadena aaabbb
+S-> aSb|ab
+S=>aSb
+aSb=>aaSbb
+aaSbb=>aaabbb
+
+Derivar la cadena +*aaa
+S->+SS|*SS|a
+S=>+SS
++SS=>+*SSS
++*SSS=>+*aSS
++*aSS=>+*aaS
++*aaS=>+*aaa
+
+Derivar la cadena (()())
+S->S(S)S|€
+S=>S(S)S
+S(S)S=>(S)S
+(S)S=>(S(S)S)S
+(S(S)S)S=>((S)S)S
+((S)S)S=>(()S)S
+(()S)S=>(()S(S)S)S
+(()S(S)S)S=>(()(S)S)S
+(()(S)S)S=>(()()S)S
+(()()S)S=>(()())S
+(()())S=>(()())
+
+Derivar la cadena ((a,a),a,(a))
+S->(L)|a
+L->L,S|S
+S=>(L)
+(L)=>(L,S)
+(L,S)=>(L,S,S)
+(L,S,S)=>(S,S,S)
+(S,S,S)=>((L,S),S,S)
+((L,S),S,S)=>((S,S),S,S)
+((S,S),S,S)=>((a,S),S,S)
+((a,S),S,S)=>((a,a),S,S)
+((a,a),S,S)=>((a,a),a,S)
+((a,a),a,S)=>((a,a),a,(L))
+((a,a),a,(L))=>((a,a),a,(S))
+((a,a),a,(S))=>((a,a),a,(a))
+
+
+Eliminación de ambigüedad 
+
+S -> S+S|SS|(S)|S*|a
+--Primero factorizamos por izquierda
+S  -> SS'|(S)|a
+S' -> +S|S|*
+--Eliminamos ambigüedad
+S  -> (S)S"|aS"
+S' -> +S|S|*
+S" -> S'S"|€
+
+
+S->S or S|S and S|not S|(S)|true|false
+--Prmiero factorizamos por la izquierda
+S  -> SS'|notS|(S)|true|false
+S' -> orS|andS
+--Eliminamos ambigüedad
+S  -> notSS"|(S)S"|
+S' -> orS|andS
+S" -> SS"|€
+
+
+Notación EBNF y diagramas de sintaxis
+                    EBNF
+S->G                S -> G
+G->PG|P             G -> {P}P
+P->id:R             P -> id:R
+R->idR|€            R -> {id} 
+
+                    EBNF
+S->+SS|*SS|a        S -> {+S|*S}a
+                
+                    EBNF
+S->aSbS|bSaS|€      S -> {aSb|bSa}
+
+                                EBNF
+S->E                            S -> E
+E->while E do E| id:= E|id      E -> {while E do|id:=}id
+
+                EBNF
+S->S(S)|€       S -> {(S)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
