@@ -1,0 +1,66 @@
+        Conceptos
+
+Defina que es un ensamblador:
+
+
+Defina que es un compilador:
+
+Defina que es un intérprete:
+
+Defina que es una máquina virtual:
+
+        Características de los programas.
+
+Órden cronológico de la aparición de traductores:
+    Ensamblador
+    Compilador
+    Intérprete
+    Máquina virtual
+
+Características de los programas compilados:
+
+Características de los programas interpretados:
+
+Características de los programas en máquina virtual:
+
+        Fases de compilación.
+
+Órden de las fases de compilación:
+    ·Análisis léxico.
+    ·Análisis sintáctico.
+    ·Análisis semántico.
+    ·Generación de código intermedio.
+    ·Optimización de código intermedio.
+    ·Generación de código objeto.
+    ·Optimización de código objeto.
+
+Fases de compilación de un ensamblador:
+
+Fases de compilación de un intérprete:
+
+Tareas de análisis léxico:
+
+Tareas de análisis sintáctico:
+
+Tareas de análisis semántico:
+
+Tareas de generación de código intermedio:
+
+Tareas de generación de código objeto:
+
+Fases de compilación que componen front-end:
+
+Fases de compilación que componen back-end:
+
+        Ejemplos de lenguajes.
+
+5 lenguajes compilados.
+
+5 lenguajes interpretados
+
+5 lenguajes en máquina virtual.
+
+5 lenguajes ensamblados.
+
+
+
