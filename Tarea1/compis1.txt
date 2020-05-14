@@ -1,13 +1,50 @@
         Conceptos
 
 Defina que es un ensamblador:
-Cambio, cambio y cambio
+Un ensamblador es un compilador sencillo, en el que el lenguaje fuente tiene una 
+estructura tan sencilla que permite la traducción de cada sentencia fuente a una
+única instrucción en código máquina. Al lenguaje que admite este compilador también
+se le llama lenguaje ensamblador. En definitiva, existe una correspondencia uno a uno
+entre las instrucciones ensamblador y las instrucciones máquina.
+Existen ensambladores avanzados que permiten definir macroinstrucciones que se
+pueden traducir a varias instrucciones máquina. A estos programas se les 
+llama macroensambladores.
 
 Defina que es un compilador:
+Es aquel traductor que tiene como entrada una sentencia en lenguaje formal
+y como salida tiene un fichero ejecutable, es decir, realiza una traducción de un 
+código de alto nivel a código máquina (también se entiende por compilador aquel 
+programa que proporciona un fichero objeto en lugar del ejecutable final).
+
+Un compilador cruzado un compilador que genera código para ser ejecutado en otra 
+máquina. Se utilizan en la fase de desarrollo de nuevos ordenadores. De esta manera es
+posible, p.ej., construir el sistema operativo de un nuevo ordenador recurriendo a un
+lenguaje de alto nivel, e incluso antes de que dicho nuevo ordenador disponga 
+siquiera de un compilador.
+
+Un metacompilador es un compilador de compiladores. Se trata de un programa que
+acepta como entrada la descripción de un lenguaje y produce el compilador de dicho
+lenguaje. Hoy por hoy no existen metacompiladores completos, pero sí parciales en los
+que se acepta como entrada una gramática de un lenguaje y se genera un autómata que
+reconoce cualquier sentencia del lenguaje . A este autómata podemos añadirle código
+para completar el resto del compilador
+
+Un descompilador realiza una labor de traducción inversa, esto es, pasa de un
+código máquina (programa de salida) al equivalente escrito en el lenguaje que lo generó
+(programa fuente). Cada descompilador trabaja con un lenguaje de alto nivel concreto.
 
 Defina que es un intérprete:
+Es como un compilador, solo que la salida es una ejecución. El programa de
+entrada se reconoce y ejecuta a la vez. No se produce un resultado físico (código
+máquina) sino lógico (una ejecución).
 
 Defina que es una máquina virtual:
+
+Este es un concepto intermedio entre el compilador e intérprete. La idea es escribir
+los programas en lenguaje de alto nivel para compilarlo y luego (traducirlo) a 
+lenguaje máquina se lo traduce a un código intermedio. Este código intermedio es
+ejecutado por un intérprete, estas dos etapas juntas son conocidas como Máquina
+Virtual.
 
         Características de los programas.
 
@@ -18,10 +55,30 @@ Defina que es una máquina virtual:
     Máquina virtual
 
 Características de los programas compilados:
+    Se ejecutan sobre la arquitectura
+    Solo se traducen una vez y se ejecutan n veces
+    No dependen del compilador para ejecutarse, ya compilados y
+    sobre la arquitectura en la que fueron compilados.
+    Una vez compilados no contienen errores de lenguaje al traducirse
+
 
 Características de los programas interpretados:
+    Son independientes de la arquitectura pero requieren al intérprete
+    Requieren al intérprete para poder ejecutarse
+    Pueden contener errores del lenguaje al ejecutarse
+    Se traducen n veces para ejecutarse n veces
+    No se ejecutan sobre la arquitectura, solo requieren al intérprete
 
 Características de los programas en máquina virtual:
+    Son compilados e interpretados
+    Son independientes de la arquitectura
+    Son robustos
+    No contienen errores del lenguaje de programación al ser ejecutados, porque
+    pimero son compilados y se ejecuta el código fuente ya compilado para el 
+    intérprete
+    No son los programas más rápidos, los más rápidos son los de ensamblador.
+
+
 
         Fases de compilación.
 
@@ -35,32 +92,82 @@ Características de los programas en máquina virtual:
     ·Optimización de código objeto.
 
 Fases de compilación de un ensamblador:
+    ·Análisis léxico.
+    ·Análisis sintáctico.
+    ·Análisis semántico.
+    ·Generación de código objeto.
 
 Fases de compilación de un intérprete:
+    ·Análisis léxico.
+    ·Análisis sintáctico.
+    ·Análisis semántico.
+    ·Ejecuta las instrucciones.
 
 Tareas de análisis léxico:
+    ·Leer el programa fuente
+    ·Genera los tokens
+    ·Eliminar los espacios en blanco
+    ·Eliminar los comentarios
+    ·Detectar errores léxicos
+    ·Recuperarse de los errores léxicos
 
 Tareas de análisis sintáctico:
+    ·Genera el árbol sintáctico
+    ·Solicita nuevos componentes lexicográficos cuando es necesario
+    ·Por eso se dice que lleva el control y todas las demás fases de análisis están
+     sometidas a él.
 
 Tareas de análisis semántico:
+    ·Revisa el árbol sintáctico junto con los atributos y la tabla de
+     símbolos para tratar de encontrar errores semánticos.
+    ·Reúne la información necesaria sobre los tipos de datos para la fase
+     posterior de generación
 
 Tareas de generación de código intermedio:
+    ·Generar una representación intermedia explícita del programa fuente.
 
 Tareas de generación de código objeto:
+    ·Consiste en generar código máquina reubicable o código ensamblador.
+
 
 Fases de compilación que componen front-end:
+    ·Análisis léxico.
+    ·Análisis sintáctico.
+    ·Análisis semántico.
+    ·Generación de código intermedio.
 
 Fases de compilación que componen back-end:
+    ·Optimización de código intermedio.
+    ·Generación de código objeto.
+    ·Optimización de código objeto.
 
         Ejemplos de lenguajes.
 
 5 lenguajes compilados.
+    ·Pascal
+    ·Cobol
+    ·Ada
+    ·VHDL
+    ·Latex
 
 5 lenguajes interpretados
+    ·SNOBOL
+    ·LISP
+    ·Julia
+    ·Python
+    ·Ruby
 
 5 lenguajes en máquina virtual.
+    ·Java
+    ·C#
+    ·Kotlin
+    ·D
+    ·Dart
 
 5 lenguajes ensamblados.
-
-
+    ·HC11
+    ·X86_64
+    ·MIPS
+    ·Z80
+    ·X86
 
