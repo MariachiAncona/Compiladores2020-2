@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "lex.yy.c"
 
 extern int yyparse();
 extern FILE *yyin;

@@ -32,7 +32,8 @@ void yyerror(char *s);
 /*Sección del esquema de traducción, usa EBNF simplificada
  $$     $1 $2 $3 */
 line : exp NL {$$=$1;
-        printf("El valor de la operación es %d\n",$$)};
+        printf("El valor de la operación es %d\n",$$);
+        };
 
 exp : exp MAS term {$$ = $1 + $3;}
     |term {$$=$1;};

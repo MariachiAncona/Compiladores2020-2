@@ -19,7 +19,7 @@ ent[0-9]+
         yylval.val = atoi(yytext);
         return NUMERO;
       }
-[\t] {}
+[ \t] {}
 .   {printf("Error léxico %s\n",yytext);}
 
 %%

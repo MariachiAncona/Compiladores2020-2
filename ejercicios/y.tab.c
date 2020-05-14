@@ -172,7 +172,7 @@ typedef struct {
 } YYSTACKDATA;
 /* variables for the parser stack */
 static YYSTACKDATA yystack;
-#line 47 "parser.y"
+#line 48 "parser.y"
 /*Sección de código de usuario*/
 
 
@@ -384,33 +384,34 @@ yyreduce:
 case 1:
 #line 34 "parser.y"
 	{yyval.val=yystack.l_mark[-1].val;
-        printf("El valor de la operación es %d\n",yyval.val)}
+        printf("El valor de la operación es %d\n",yyval.val);
+        }
 break;
 case 2:
-#line 37 "parser.y"
+#line 38 "parser.y"
 	{yyval.val = yystack.l_mark[-2].val + yystack.l_mark[0].val;}
 break;
 case 3:
-#line 38 "parser.y"
+#line 39 "parser.y"
 	{yyval.val=yystack.l_mark[0].val;}
 break;
 case 4:
-#line 40 "parser.y"
+#line 41 "parser.y"
 	{yyval.val = yystack.l_mark[-2].val * yystack.l_mark[0].val;}
 break;
 case 5:
-#line 41 "parser.y"
+#line 42 "parser.y"
 	{yyval.val = yystack.l_mark[0].val;}
 break;
 case 6:
-#line 43 "parser.y"
+#line 44 "parser.y"
 	{yyval.val = yystack.l_mark[-1].val;}
 break;
 case 7:
-#line 44 "parser.y"
+#line 45 "parser.y"
 	{yyval.val = yystack.l_mark[0].val;}
 break;
-#line 414 "y.tab.c"
+#line 415 "y.tab.c"
     }
     yystack.s_mark -= yym;
     yystate = *yystack.s_mark;
