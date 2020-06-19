@@ -15,4 +15,4 @@ Eliminando recursividad.
 
 __S → ( L ) | a__  
 __L → S L'__  
-__L' → , L S | €__  
+__L' → , S L' | €__  
