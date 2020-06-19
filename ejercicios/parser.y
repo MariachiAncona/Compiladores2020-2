@@ -29,7 +29,7 @@ void yyerror(char *s);
 %start line
 
 %%
-/*Sección del esquema de traducción, usa EBNF simplificada
+/*Sección del esquema de traducción, usa BNF simplificada
  $$     $1 $2 $3 */
 line : exp NL {$$=$1;
         printf("El valor de la operación es %d\n",$$);
